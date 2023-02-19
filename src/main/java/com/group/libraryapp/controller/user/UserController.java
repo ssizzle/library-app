@@ -4,6 +4,7 @@ import com.group.libraryapp.dto.user.request.UserCreateRequest;
 import com.group.libraryapp.dto.user.request.UserUpdateRequest;
 import com.group.libraryapp.dto.user.response.UserResponse;
 import com.group.libraryapp.service.user.UserServiceV1;
+import com.group.libraryapp.service.user.UserServiceV2;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,18 +13,18 @@ import java.util.List;
 public class UserController {
 
 //    private final List<User> users = new ArrayList<>();
-    private final UserServiceV1 userServiceV1;
+    private final UserServiceV2 userService;
 //    private final JdbcTemplate jdbcTemplate;
 
-    public UserController(UserServiceV1 userServiceV1) {
+    public UserController(UserServiceV2 userService) {
 //        this.jdbcTemplate = jdbcTemplate;
-        this.userServiceV1 = userServiceV1;
+        this.userService = userService;
     }
 
     @PostMapping("/user") // POST /user
     public void saveUser(@RequestBody UserCreateRequest request) {
 //        users.add(new User(request.getName(), request.getAge()));
-        userServiceV1.saveUser(request);
+        userService.saveUser(request);
     }
 
     @GetMapping("/user")
@@ -34,18 +35,18 @@ public class UserController {
 //        }
 //        return responses;
 
-        return userServiceV1.getUsers();
+        return userService.getUsers();
     }
 
     @PutMapping("/user")
     public void updateUser(@RequestBody UserUpdateRequest request) {
-        userServiceV1.updateUser(request);
+        userService.updateUser(request);
 
     }
 
     @DeleteMapping("/user")
     public void deleteUser(@RequestParam String name) {
-       userServiceV1.deleteUser(name);
+       userService.deleteUser(name);
     }
 
 }
