@@ -1,8 +1,12 @@
 package com.group.libraryapp.domain.user;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
 
     @Id
@@ -13,8 +17,8 @@ public class User {
     private String name;
     private Integer age;
 
-    protected User() { //JPA를 사용하기 위해서는 매개변수가 없는 기본 생성자가 꼭 필요함
-    }
+//    protected User() { //JPA를 사용하기 위해서는 매개변수가 없는 기본 생성자가 꼭 필요함
+//    }
 
     public User(String name, Integer age) {
         if (name == null || name.isBlank()) {
