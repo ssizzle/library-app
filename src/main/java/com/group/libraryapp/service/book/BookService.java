@@ -20,12 +20,6 @@ public class BookService {
     private final UserLoanHistoryRepository userLoanHistoryRepository;
     private final UserRepository userRepository;
 
-//    public BookService(BookRepository bookRepository, UserLoanHistoryRepository userLoanHistoryRepository, UserRepository userRepository) {
-//        this.bookRepository = bookRepository;
-//        this.userLoanHistoryRepository = userLoanHistoryRepository;
-//        this.userRepository = userRepository;
-//    }
-
     @Transactional
     public void saveBook(BookCreateRequest request) {
         bookRepository.save(new Book(request.getName()));
